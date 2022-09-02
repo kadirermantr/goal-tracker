@@ -2,7 +2,10 @@
 
 namespace App\Exceptions;
 
+use App\Replier;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -46,5 +49,23 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    /**
+     * @param $request
+     * @param Throwable $e
+     * @return Response|JsonResponse
+     * @throws Throwable
+     */
+    public function render($request, Throwable $e): Response|JsonResponse
+    {
+        if ($request->is('api/*')) {
+            return Replier::responseFalse(
+                null,
+                $e->getMessage()
+            );
+        }
+
+        return parent::render($request, $e);
     }
 }
