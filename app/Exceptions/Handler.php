@@ -6,6 +6,7 @@ use App\Replier;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -60,6 +61,14 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $e): Response|JsonResponse
     {
         if ($request->is('api/*')) {
+            if ($e instanceof NotFoundHttpException) {
+                return Replier::responseFalse(
+                  null,
+                  'Resource not found.',
+                  404
+                );
+            }
+
             return Replier::responseFalse(
                 null,
                 $e->getMessage()
