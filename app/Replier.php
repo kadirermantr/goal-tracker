@@ -35,7 +35,11 @@ class Replier
     public static function responseSuccess($data): JsonResponse
     {
         if (is_null($data)) {
-            return self::responseFalse();
+            return self::responseFalse(
+                null,
+                null,
+                404
+            );
         }
 
         return self::response(
