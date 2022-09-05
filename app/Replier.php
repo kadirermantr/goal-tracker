@@ -18,7 +18,7 @@ class Replier
     {
         $body = [
             'success' => $success,
-            'data' => $data,
+            'data' => $data
         ];
 
         if (isset($message)) {
@@ -41,7 +41,7 @@ class Replier
         return self::response(
             true,
             200,
-            $data,
+            $data
         );
     }
 
@@ -57,7 +57,7 @@ class Replier
             false,
             $code,
             $data,
-            $message,
+            $message
         );
     }
 
