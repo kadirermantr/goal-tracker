@@ -14,21 +14,29 @@ class GoalController extends Controller
     /**
      * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
         $goal = Goal::all();
 
         return Replier::responseSuccess($goal);
     }
 
-    public function show($id)
+    /**
+     * @param $id
+     * @return JsonResponse
+     */
+    public function show($id): JsonResponse
     {
         $goal = Goal::find($id);
 
         return Replier::responseSuccess($goal);
     }
 
-    public function store(GoalRequest $request)
+    /**
+     * @param GoalRequest $request
+     * @return JsonResponse
+     */
+    public function store(GoalRequest $request): JsonResponse
     {
         $totalDays = $request->amount * GoalConstants::PERIOD_VALUES[strtoupper($request->period)];
 
@@ -43,7 +51,11 @@ class GoalController extends Controller
         return $this->show($goal->id);
     }
 
-    public function destroy($id)
+    /**
+     * @param $id
+     * @return JsonResponse
+     */
+    public function destroy($id): JsonResponse
     {
         $goal = Goal::find($id);
 

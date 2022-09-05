@@ -6,26 +6,38 @@ use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Replier;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index()
+    /**
+     * @return JsonResponse
+     */
+    public function index(): JsonResponse
     {
         $user = User::all();
 
         return Replier::responseSuccess($user);
     }
 
-    public function show($id)
+    /**
+     * @param $id
+     * @return JsonResponse
+     */
+    public function show($id): JsonResponse
     {
         $user = User::find($id);
 
         return Replier::responseSuccess($user);
     }
 
-    public function store(UserRequest $request)
+    /**
+     * @param UserRequest $request
+     * @return JsonResponse
+     */
+    public function store(UserRequest $request): JsonResponse
     {
         $user = User::create([
             'name' => $request->name,
@@ -40,7 +52,11 @@ class UserController extends Controller
         return $this->show($user->id);
     }
 
-    public function destroy($id)
+    /**
+     * @param $id
+     * @return JsonResponse
+     */
+    public function destroy($id): JsonResponse
     {
         $user = User::find($id);
 
