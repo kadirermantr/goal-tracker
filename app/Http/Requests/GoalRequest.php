@@ -15,10 +15,10 @@ class GoalRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
-            'amount' => 'required|int',
-            'period' => 'required|string|in:' . implode(',', GoalConstants::PERIODS),
-            'start_date' => 'required'
+            'name' => ['required', 'string'],
+            'amount' => ['required', 'int'],
+            'period' => ['required', 'string', 'in:'  . implode(',', GoalConstants::PERIODS)],
+            'start_date' => ['required']
         ];
     }
 }
