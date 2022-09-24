@@ -15,6 +15,7 @@ class GoalRequest extends FormRequest
     public function rules()
     {
         return [
+            'user_id' => ['required', 'exists:users,id'],
             'name' => ['required', 'string'],
             'amount' => ['required', 'int'],
             'period' => ['required', 'string', 'in:'  . implode(',', GoalConstants::PERIODS)],
