@@ -57,8 +57,8 @@ class GoalController extends Controller
     {
         $goal->destroy($goal->id);
 
-        return Replier::responseFalse([
-            'message' => 'Goal deleted'
+        return Replier::responseSuccess([
+            'message' => 'User deleted'
         ]);
     }
 }
