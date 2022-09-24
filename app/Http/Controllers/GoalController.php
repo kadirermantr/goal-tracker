@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Constants\GoalConstants;
 use App\Http\Requests\GoalRequest;
 use App\Models\Goal;
+use App\Models\User;
+use App\Models\UserGoal;
 use App\Replier;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Carbon;
@@ -44,6 +46,11 @@ class GoalController extends Controller
             'period' => $request->period,
             'start_date' => $request->start_date,
             'finish_date' => Carbon::create($request->start_date)->addDays($totalDays),
+        ]);
+
+        UserGoal::create([
+            'user_id' => $request->user_id,
+            'goal_id' => $goal->id,
         ]);
 
         return $this->show($goal);
