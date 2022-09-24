@@ -23,13 +23,11 @@ class UserController extends Controller
     }
 
     /**
-     * @param $id
+     * @param User $user
      * @return JsonResponse
      */
-    public function show($id): JsonResponse
+    public function show(User $user): JsonResponse
     {
-        $user = User::find($id);
-
         return Replier::responseSuccess($user);
     }
 
@@ -49,27 +47,19 @@ class UserController extends Controller
 
         Auth::login($user);
 
-        return $this->show($user->id);
+        return $this->show($user);
     }
 
     /**
-     * @param $id
+     * @param User $user
      * @return JsonResponse
      */
-    public function destroy($id): JsonResponse
+    public function destroy(User $user): JsonResponse
     {
-        $user = User::find($id);
+        $user->destroy($user->id);
 
-        if ($user) {
-            $user->destroy($id);
-
-            return Replier::responseSuccess([
-                'message' => 'User deleted'
-            ]);
-        }
-
-        return Replier::responseFalse([
-            'message' => 'User not found'
+        return Replier::responseSuccess([
+            'message' => 'User deleted'
         ]);
     }
 }
