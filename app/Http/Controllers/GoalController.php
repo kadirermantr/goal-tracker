@@ -22,13 +22,11 @@ class GoalController extends Controller
     }
 
     /**
-     * @param $id
+     * @param Goal $goal
      * @return JsonResponse
      */
-    public function show($id): JsonResponse
+    public function show(Goal $goal): JsonResponse
     {
-        $goal = Goal::find($id);
-
         return Replier::responseSuccess($goal);
     }
 
@@ -48,27 +46,19 @@ class GoalController extends Controller
             'finish_date' => Carbon::create($request->start_date)->addDays($totalDays),
         ]);
 
-        return $this->show($goal->id);
+        return $this->show($goal);
     }
 
     /**
-     * @param $id
+     * @param Goal $goal
      * @return JsonResponse
      */
-    public function destroy($id): JsonResponse
+    public function destroy(Goal $goal): JsonResponse
     {
-        $goal = Goal::find($id);
-
-        if ($goal) {
-            $goal->destroy($id);
-
-            return Replier::responseSuccess([
-                'message' => 'Goal deleted'
-            ]);
-        }
+        $goal->destroy($goal->id);
 
         return Replier::responseFalse([
-            'message' => 'Goal not found'
+            'message' => 'Goal deleted'
         ]);
     }
 }
