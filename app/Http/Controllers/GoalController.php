@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Constants\GoalConstants;
 use App\Http\Requests\GoalRequest;
 use App\Models\Goal;
-use App\Models\User;
 use App\Models\UserGoal;
 use App\Replier;
 use Illuminate\Http\JsonResponse;
@@ -24,7 +23,7 @@ class GoalController extends Controller
     }
 
     /**
-     * @param Goal $goal
+     * @param  Goal  $goal
      * @return JsonResponse
      */
     public function show(Goal $goal): JsonResponse
@@ -33,7 +32,7 @@ class GoalController extends Controller
     }
 
     /**
-     * @param GoalRequest $request
+     * @param  GoalRequest  $request
      * @return JsonResponse
      */
     public function store(GoalRequest $request): JsonResponse
@@ -57,7 +56,7 @@ class GoalController extends Controller
     }
 
     /**
-     * @param Goal $goal
+     * @param  Goal  $goal
      * @return JsonResponse
      */
     public function destroy(Goal $goal): JsonResponse
@@ -65,7 +64,7 @@ class GoalController extends Controller
         $goal->destroy($goal->id);
 
         return Replier::responseSuccess([
-            'message' => 'User deleted'
+            'message' => 'User deleted',
         ]);
     }
 }

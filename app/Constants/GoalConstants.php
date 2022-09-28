@@ -10,13 +10,13 @@ class GoalConstants extends Enum
         'DAILY' => 'daily',
         'WEEKLY' => 'weekly',
         'MONTHLY' => 'monthly',
-        'YEARLY' => 'yearly'
+        'YEARLY' => 'yearly',
     ];
 
     const PERIOD_VALUES = [
         'DAILY' => 1,
         'WEEKLY' => 7,
         'MONTHLY' => 30,
-        'YEARLY' => 365
+        'YEARLY' => 365,
     ];
 }

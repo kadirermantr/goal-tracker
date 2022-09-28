@@ -23,7 +23,7 @@ class UserController extends Controller
     }
 
     /**
-     * @param User $user
+     * @param  User  $user
      * @return JsonResponse
      */
     public function show(User $user): JsonResponse
@@ -32,7 +32,7 @@ class UserController extends Controller
     }
 
     /**
-     * @param UserRequest $request
+     * @param  UserRequest  $request
      * @return JsonResponse
      */
     public function store(UserRequest $request): JsonResponse
@@ -51,7 +51,7 @@ class UserController extends Controller
     }
 
     /**
-     * @param User $user
+     * @param  User  $user
      * @return JsonResponse
      */
     public function destroy(User $user): JsonResponse
@@ -59,7 +59,7 @@ class UserController extends Controller
         $user->destroy($user->id);
 
         return Replier::responseSuccess([
-            'message' => 'User deleted'
+            'message' => 'User deleted',
         ]);
     }
 }

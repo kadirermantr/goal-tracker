@@ -21,11 +21,11 @@ class Goal extends Model
         'amount',
         'period',
         'start_date',
-        'finish_date'
+        'finish_date',
     ];
 
     protected $casts = [
         'start_date' => 'datetime:Y-m-d',
-        'finish_date' => 'datetime:Y-m-d'
+        'finish_date' => 'datetime:Y-m-d',
     ];
 }

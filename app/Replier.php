@@ -8,8 +8,8 @@ use Illuminate\Validation\ValidationException;
 class Replier
 {
     /**
-     * @param bool $success
-     * @param int $code
+     * @param  bool  $success
+     * @param  int  $code
      * @param $data
      * @param $message
      * @return JsonResponse
@@ -18,7 +18,7 @@ class Replier
     {
         $body = [
             'success' => $success,
-            'data' => $data
+            'data' => $data,
         ];
 
         if (isset($message)) {
@@ -52,7 +52,7 @@ class Replier
     /**
      * @param $data
      * @param $message
-     * @param int $code
+     * @param  int  $code
      * @return JsonResponse
      */
     public static function responseFalse($data = null, $message = null, int $code = 400): JsonResponse

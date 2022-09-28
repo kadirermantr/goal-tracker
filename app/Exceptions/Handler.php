@@ -54,8 +54,9 @@ class Handler extends ExceptionHandler
 
     /**
      * @param $request
-     * @param Throwable $e
+     * @param  Throwable  $e
      * @return Response|JsonResponse
+     *
      * @throws Throwable
      */
     public function render($request, Throwable $e): Response|JsonResponse
@@ -63,9 +64,9 @@ class Handler extends ExceptionHandler
         if ($request->is('api/*')) {
             if ($e instanceof NotFoundHttpException) {
                 return Replier::responseFalse(
-                  null,
-                  'Resource not found.',
-                  404
+                    null,
+                    'Resource not found.',
+                    404
                 );
             }
 
