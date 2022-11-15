@@ -41,6 +41,7 @@ class GoalController extends Controller
 
         $goal = Goal::create([
             'name' => $request->name,
+            'description' => $request->description,
             'amount' => $request->amount,
             'period' => $request->period,
             'start_date' => $request->start_date,

@@ -18,6 +18,7 @@ class Goal extends Model
 
     protected $fillable = [
         'name',
+        'description',
         'amount',
         'period',
         'start_date',

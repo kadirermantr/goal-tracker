@@ -29,6 +29,7 @@ class GoalFactory extends Factory
 
         return [
             'name' => fake()->text(30),
+            'description' => fake()->sentence(),
             'amount' => $amount,
             'period' => $period,
             'start_date' => $date,

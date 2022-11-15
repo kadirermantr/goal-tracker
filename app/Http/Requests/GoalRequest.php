@@ -17,6 +17,7 @@ class GoalRequest extends FormRequest
         return [
             'user_id' => ['required', 'exists:users,id'],
             'name' => ['required', 'string'],
+            'description' => ['nullable'],
             'amount' => ['required', 'int'],
             'period' => ['required', 'string', 'in:'.implode(',', GoalConstants::PERIODS)],
             'start_date' => ['required'],

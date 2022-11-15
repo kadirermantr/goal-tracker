@@ -17,6 +17,7 @@ return new class extends Migration
         Schema::create('goals', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->text('description')->nullable();
             $table->integer('amount');
             $table->enum('period', GoalConstants::PERIODS);
             $table->timestamp('start_date');
