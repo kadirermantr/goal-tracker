@@ -33,6 +33,7 @@ class GoalFactory extends Factory
             'amount' => $amount,
             'period' => $period,
             'start_date' => $date,
+            'user_id' => fake()->randomDigitNotZero(),
             'finish_date' => $date->copy()->addDays($totalDays),
         ];
     }

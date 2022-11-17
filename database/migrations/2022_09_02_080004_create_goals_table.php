@@ -1,6 +1,7 @@
 <?php
 
 use App\Constants\GoalConstants;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->integer('amount');
             $table->enum('period', GoalConstants::PERIODS);
+            $table->foreignIdFor(User::class);
             $table->timestamp('start_date');
             $table->timestamp('finish_date');
         });
