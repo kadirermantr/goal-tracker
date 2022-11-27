@@ -9,6 +9,7 @@ use App\Models\UserGoal;
 use App\Replier;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class GoalController extends Controller
 {
@@ -49,7 +50,7 @@ class GoalController extends Controller
         ]);
 
         UserGoal::create([
-            'user_id' => $request->user_id,
+            'user_id' => Auth::id(),
             'goal_id' => $goal->id,
         ]);
 
